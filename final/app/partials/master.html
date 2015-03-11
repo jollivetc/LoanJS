@@ -16,7 +16,7 @@
 
         <tr ng-repeat="loan in loans|filter:search" class="done-{{loan.done}}">
             <td><input type="checkbox" ng-model="loan.done"></td>
-            <td>{{loan.object}}</td>
+            <td>{{loan.object | uppercase}}</td>
             <td>{{loan.person.name}}
                 <tj-avatar personpic="loan.person.picture"></tj-avatar>
 

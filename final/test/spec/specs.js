@@ -28,7 +28,7 @@ describe('loanApp', function(){
             expect(scope.loans).toBe(42);
         });
         it('should call location', function () {
-            scope.showDetails(1);
+            scope.details(1);
             expect(location.path).toHaveBeenCalledWith('/details/1');
         });
     });
@@ -50,7 +50,7 @@ describe('loanApp', function(){
         }));
         it('should call backend', function () {
             var result = {foo: 'bar'};
-            httpBackend.expectGET('http://localhost:8000/api/loans/1').respond(result);
+            httpBackend.expectGET('http://localhost:3000/loans/1').respond(result);
 
             loan.get({loanId: 1}, function(data){
                 expect(data.foo).toBe('bar');
