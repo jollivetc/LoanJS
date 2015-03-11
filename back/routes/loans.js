@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var loans = [
-	{id:0, object:'Sabre Laser', returned : true, person: {name : 'Luke Skywalker', picture:'lukeskyywalker.jpg'}},
+	{id:0, object:'Sabre Laser', returned : true, person: {name : 'Luke Skywalker', picture:'lukeskywalker.jpg'}},
 	{id:0, object:'Tournevis sonic', returned : false, person: {name : 'Docteur Who', picture:'doctorWho.jpg'}},
 	{id:0, object:'Goldorak', returned : false, person: {name : 'Actarus', picture:'actarus.jpg'}}
 ];
