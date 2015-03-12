@@ -3,8 +3,8 @@ var router = express.Router();
 
 var loans = [
 	{id:0, object:'Sabre Laser', returned : true, person: {name : 'Luke Skywalker', picture:'lukeskywalker.jpg'}},
-	{id:0, object:'Tournevis sonique', returned : false, person: {name : 'Docteur Who', picture:'doctorWho.jpg'}},
-	{id:0, object:'Goldorak', returned : false, person: {name : 'Actarus', picture:'actarus.jpg'}}
+	{id:1, object:'Tournevis sonique', returned : false, person: {name : 'Docteur Who', picture:'doctorWho.jpg'}},
+	{id:2, object:'Goldorak', returned : false, person: {name : 'Actarus', picture:'actarus.jpg'}}
 ];
 
 router.get('/', function(req, res, next){
