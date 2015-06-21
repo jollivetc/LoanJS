@@ -14,8 +14,6 @@ app.config(function ($routeProvider) {
         }).otherwise({redirectTo:'/'});
 });
 
-
-
 app.controller('mainCtrl', function($scope, Loan, $location){
 
     //Define the model for persons
