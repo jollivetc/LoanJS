@@ -5,30 +5,28 @@ describe('loanApp', function(){
     });
 
     describe('mainCtrl', function(){
-        var scope, location;
+        var mainCtrl, location;
         var loanMock = {
             query: function () {
                 return 42;
             }
         };
-        beforeEach(inject(function($rootScope, $controller, $location){
-            scope = $rootScope.$new();
+        beforeEach(inject(function($controller, $location){
             location = $location;
             spyOn(location, 'path');
-            $controller('mainCtrl', {
-                $scope: scope,
+            mainCtrl = $controller('mainCtrl', {
                 Loan: loanMock,
                 $location: location
             });
         }));
         it('should set persons', function () {
-            expect(scope.persons.length).toBe(4);
+            expect(mainCtrl.persons.length).toBe(4);
         });
         it('should call query', function () {
-            expect(scope.loans).toBe(42);
+            expect(mainCtrl.loans).toBe(42);
         });
         it('should call location', function () {
-            scope.details(1);
+            mainCtrl.details(1);
             expect(location.path).toHaveBeenCalledWith('/details/1');
         });
     });

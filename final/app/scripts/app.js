@@ -2,19 +2,21 @@
 
 var app = angular.module('loanApp', ['ngResource', 'ngRoute']);
 
-app.config(function ($routeProvider) {
+app.config(['$routeProvider',function ($routeProvider) {
     $routeProvider
         .when('/',{
             templateUrl : 'partials/master.html',
-            controller : 'mainCtrl'
+            controller : 'mainCtrl',
+            controllerAs : 'mainCtrl'
         })
         .when('/details/:loanId', {
             templateUrl : 'partials/details.html',
-            controller : 'detailsCtrl'
+            controller : 'detailsCtrl',
+            controllerAs : 'detailsCtrl'
         }).otherwise({redirectTo:'/'});
-});
+}]);
 
-app.controller('mainCtrl', function($scope, Loan, $location){
+app.controller('mainCtrl', ['Loan', '$location', function(Loan, $location){
 
     //Define the model for persons
     var persons = [
@@ -23,45 +25,49 @@ app.controller('mainCtrl', function($scope, Loan, $location){
         {name: 'Actarus', picture: 'actarus.jpg'},
         {name: 'Capitaine Kirk', picture: 'kirk.jpeg'}
     ];
+    var vm = this;
 
-    $scope.loans = Loan.query();
-    $scope.persons = persons;
+    vm.loans = Loan.query();
+    vm.persons = persons;
+    vm.newLoan = {}
 
-    $scope.remaining = function () {
-        return $scope.loans.reduce(function (count, loan) {
+    vm.remaining = function () {
+        return vm.loans.reduce(function (count, loan) {
             return loan.done ? count : count + 1;
         }, 0);
     };
 
-    $scope.ajouter = function(newLoan, selectedPerson){
+    vm.ajouter = function(newLoan, selectedPerson){
         //var loan = {object: newLoan.loanedObject, person: selectedPerson, done: false};
         var loan = new Loan();
-        loan.object = newLoan.loanedObject;
-        loan.person = selectedPerson;
+        loan.object = vm.newLoan.loanedObject;
+        loan.person = vm.selectedPerson;
         loan.$save(function(){
-            $scope.loans = Loan.query();
+            vm.loans = Loan.query();
         });
 
-        $scope.newLoan = {};
-        $scope.selectedPerson = {};
+        vm.newLoan = {};
+        vm.selectedPerson = {};
     };
 
-    $scope.details = function(id){
+
+    vm.details = function(id){
         $location.path("/details/" + id);
 
     };
 
 
-});
+}]);
 
-app.controller('detailsCtrl', function($scope, Loan, $location, $routeParams){
+app.controller('detailsCtrl', [`Loan`, `$location`, `$routeParams`, function(Loan, $location, $routeParams){
     var id = $routeParams.loanId;
-    $scope.currentLoan = Loan.get({loanId:id});
+    var vm = this;
+    vm.currentLoan = Loan.get({loanId:id});
 
-    $scope.goToMaster = function(){
+    vm.goToMaster = function(){
         $location.path("/");
     }
-});
+}]);
 
 app.filter('picUrl', function () {
     return function (personPic) {
@@ -73,7 +79,7 @@ app.filter('picUrl', function () {
     };
 });
 
-app.factory('Loan',function($resource){
+app.factory('Loan',['$resource',function($resource){
     var Loan = $resource(
            'http://localhost:3000/loans/:loanId',
            {},
@@ -83,7 +89,7 @@ app.factory('Loan',function($resource){
        );
         Loan.prototype.done=false;
         return Loan;
-});
+}]);
 
 app.directive('tjAvatar', function(){
     return{
