@@ -1,0 +1,13 @@
+.done-true{
+    color: #808080;
+    text-decoration: line-through;
+}
+.thumb{
+    height: 100px;
+    width: auto;
+}
+
+.ng-invalid{
+    border-color: red;
+    border-width: 3;
+}
