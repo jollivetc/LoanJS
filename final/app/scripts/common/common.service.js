@@ -1,19 +1,25 @@
-(function(){
-  'use strict';
-  angular.module('loanJS.common')
-    .factory('Loan', Loan);
+(function () {
+    'use strict';
+    angular.module('loanJS.common')
+        .service('LoanService', LoanService);
 
-  Loan.$inject=['$resource'];
+    LoanService.$inject = ['Loan'];
 
-  function Loan($resource){
-    var LoanService = $resource(
-           'http://localhost:3000/loans/:loanId',
-           {},
-           {
-               update:{method:'PUT'}
-           }
-       );
-    LoanService.prototype.done=false;
-    return LoanService;
-  };
+    function LoanService(Loan) {
+        this.findAll = findAll;
+        this.getById = getById;
+        this.add = add;
+        
+        function findAll(){
+            return Loan.query();
+        }
+        
+        function getById(id){
+            return Loan.query({id: id});
+        }
+        
+        function add(newLoan){
+            return new Loan(newLoan).$save();
+        }
+    }
 })()

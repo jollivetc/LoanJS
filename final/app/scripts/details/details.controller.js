@@ -1,7 +1,7 @@
 (function(){
   'use strict';
   angular.module('loanJS.details')
-    .controller('detailsCtrl', DetailsCtrl)
+    .controller('DetailsCtrl', DetailsCtrl)
 
   DetailsCtrl.$inject = [`Loan`, `$location`, `$routeParams`]
 

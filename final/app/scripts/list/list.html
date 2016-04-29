@@ -1,0 +1,57 @@
+<div class="container">
+
+    Vous
+    <ng-pluralize count="listCtrl.remaining()" 
+                  when="{'0': 'n\'avez pas d\'objet prêté.',
+                       'one': 'avez {} objet prêté.',
+                       'other': 'avez {} objects prêtés.'}"></ng-pluralize>
+
+    <div class="form-group ">
+        <label for="filter">filtre</label>
+        <input id="filter" type="text" 
+               name="filter" class="form-control" 
+               ng-model="listCtrl.searchCriteria.object">
+    </div>
+
+
+    <table class="table table-striped table-condensed">
+
+        <tr ng-repeat="loan in listCtrl.loans|filter:listCtrl.searchCriteria" 
+            class="done-{{loan.returned}}">
+            <td>
+                <input type="checkbox" ng-model="loan.returned">
+            </td>
+            <td>{{loan.object | uppercase}}</td>
+            <td>{{loan.person.name}}
+                <tj-avatar personpic="loan.person.picture"></tj-avatar>
+
+            </td>
+            <td>
+                <button class="btn btn-primary" ng-click="listCtrl.goToDetails(loan.id)">
+                    details
+                </button>
+            </td>
+        </tr>
+    </table>
+
+    <form role="form" class="form-inline" name="loanForm">
+        <div class="form-group">
+            <input type="text" class="form-control" name="loanObject" 
+                   ng-maxlength="20" ng-model="listCtrl.newLoan.object" 
+                   ng-required="true">
+            <span ng-show="loanForm.loanObject.$error.required">valeur obligatoire</span>
+            <span ng-show="loanForm.loanObject.$error.maxlength">Maximun 20 caractères</span>
+        </div>
+        <div class="form-group">
+            <select ng-options="p as p.name for p in listCtrl.persons" 
+                    ng-required="true"
+                    ng-model="listCtrl.newLoan.person"></select>
+
+            <button class="btn btn-primary" ng-disabled="loanForm.$invalid" 
+                    ng-click="listCtrl.add()">
+                ajouter
+            </button>
+        </div>
+    </form>
+
+</div>

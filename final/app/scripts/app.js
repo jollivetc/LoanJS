@@ -6,13 +6,13 @@
       .config(['$routeProvider',function ($routeProvider) {
           $routeProvider
               .when('/',{
-                  templateUrl : 'partials/master.html',
-                  controller : 'mainCtrl',
-                  controllerAs : 'mainCtrl'
+                  templateUrl : 'scripts/list/list.html',
+                  controller : 'ListCtrl',
+                  controllerAs : 'listCtrl'
               })
               .when('/details/:loanId', {
-                  templateUrl : 'partials/details.html',
-                  controller : 'detailsCtrl',
+                  templateUrl : 'scripts/details/details.html',
+                  controller : 'DetailsCtrl',
                   controllerAs : 'detailsCtrl'
               }).otherwise({redirectTo:'/'});
           }]);
