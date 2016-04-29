@@ -46,6 +46,7 @@
             loanService.add(vm.newLoan)
                 .then(function (returnedLoan) {
                     vm.loans.push(returnedLoan)
+                    vm.newLoan ={};
                 })
         };
 

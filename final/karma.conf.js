@@ -17,19 +17,14 @@ module.exports = function(config) {
       'app/bower_components/angular-mocks/angular-mocks.js',
       'app/bower_components/angular-resource/angular-resource.js',
       'app/bower_components/angular-route/angular-route.js',
-/*      'app/scripts/common/*.js',
-      'app/scripts/details/*.js',
-      'app/scripts/list/*.js',
-*/
       'app/scripts/**/*.module.js',
       'app/scripts/**/*.js',
       'app/scripts/*.js',
-      'test/spec/**/*.js'
     ],
 
     // list of files / patterns to exclude
     exclude: [],
-
+      
     // web server port
     port: 8080,
 
