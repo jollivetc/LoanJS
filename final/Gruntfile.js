@@ -35,6 +35,12 @@ module.exports = function (grunt) {
         files: ['test/spec/{,*/}*.js'],
         tasks: ['newer:jshint:test', 'karma']
       },
+      html:{
+        files: ['<%= yeoman.app %>/scripts/{,*/}*.html'],
+        options:{
+          livereload:true
+        }
+      },
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
@@ -162,7 +168,7 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'copy:styles',
-      'configureProxies',
+//      'configureProxies',
       'connect:livereload',
       'watch'
     ]);
@@ -175,7 +181,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
-    'configureProxies',
+//    'configureProxies',
     'connect:test',
     'karma'
   ]);
