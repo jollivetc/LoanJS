@@ -29,3 +29,6 @@ bower_components
 
 # Users Environment Variables
 .lock-wscript
+
+# work directories
+*.tmp
