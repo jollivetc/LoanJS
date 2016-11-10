@@ -28,7 +28,7 @@
         
         
         var vm = this;
-
+        
         vm.loans = loanService.findAll();
         vm.persons = persons;
         vm.newLoan = {}
@@ -38,7 +38,7 @@
 
         function remaining() {
             return vm.loans.reduce(function (count, loan) {
-                return loan.done ? count : count + 1;
+                return loan.returned ? count : count + 1;
             }, 0);
         };
 
