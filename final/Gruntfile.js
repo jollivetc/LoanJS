@@ -168,7 +168,6 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'copy:styles',
-//      'configureProxies',
       'connect:livereload',
       'watch'
     ]);
@@ -181,7 +180,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
-//    'configureProxies',
     'connect:test',
     'karma'
   ]);
