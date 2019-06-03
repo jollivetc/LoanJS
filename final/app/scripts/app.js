@@ -1,7 +1,7 @@
 
 (function(){
     'use strict';
-    angular.module('loanApp', ['ngResource', 'ngRoute', 'loanJS.common', 'loanJS.list', 'loanJS.details', 'loanJS.tableBtn'])
+    angular.module('loanApp', ['ngResource', 'ngRoute', 'loanJS.common', 'loanJS.list', 'loanJS.details'])
 
       .config(['$routeProvider',function ($routeProvider) {
           $routeProvider

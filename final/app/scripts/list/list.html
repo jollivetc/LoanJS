@@ -23,10 +23,11 @@
             <td>{{loan.object | uppercase}}</td>
             <td>{{loan.person.name}}
                 <tj-avatar personpic="loan.person.picture"></tj-avatar>
-
             </td>
             <td>
-                <table-btn loan="loan" on-go-to-details="listCtrl.goToDetails(id)"></table-btn>
+                <button class="btn btn-primary" ng-click="listCtrl.goToDetails(loan.id)">
+                    details
+                </button>
             </td>
         </tr>
     </table>
