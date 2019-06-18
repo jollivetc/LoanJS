@@ -28,7 +28,7 @@ module.exports = function (grunt) {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
         tasks: ['newer:jshint:all'],
         options: {
-          livereload: true
+          livereload: '<%= connect.options.livereload %>'
         }
       },
       jsTest: {
@@ -38,7 +38,7 @@ module.exports = function (grunt) {
       html:{
         files: ['<%= yeoman.app %>/scripts/{,*/}*.html'],
         options:{
-          livereload:true
+          livereload:'<%= connect.options.livereload %>'
         }
       },
       styles: {
@@ -75,7 +75,7 @@ module.exports = function (grunt) {
         port: 9000,
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: 'localhost',
-        livereload: 35729
+        livereload: 35730
       },
       livereload: {
         options: {
