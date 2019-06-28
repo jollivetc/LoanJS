@@ -23,10 +23,10 @@ You need first to clone the repository
 * `bower install`
 * `grunt serve`
 
-You can run the test with `grunt test``
+You can run the test with `grunt test`
 
 You can also run protractor by :
 
 * starting the back and final application
-* start webdriver server : `webdrive-manager start`
+* start webdriver server : `webdriver-manager start`
 * start protractor : `protractor protractor-conf.js`
